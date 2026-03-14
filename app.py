@@ -270,7 +270,7 @@ def secs_to_ms(s):
     return f"{m}:{sec:06.3f}"
 
 def load_race_data(year, event_name):
-    fastf1.Cache.enable_cache("f1_cache")
+    import os; os.makedirs("f1_cache", exist_ok=True); fastf1.Cache.enable_cache("f1_cache")
     session = fastf1.get_session(year, event_name, "R")
     session.load(telemetry=False, weather=False, messages=False)
     all_laps = session.laps.copy()
